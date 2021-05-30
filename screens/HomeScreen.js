@@ -3,6 +3,7 @@ import {Header, ThemeConsumer} from 'react-native-elements'
 import {Text,TextInput,TouchableOpacity,StyleSheet,View,Modal,Alert} from 'react-native'
 import db from '../config'
 import * as firebase from 'firebase'
+import MyHeader from '../components/MyHeader'
 
 export default class HomeScreen extends React.Component{
     constructor(){
@@ -15,6 +16,7 @@ export default class HomeScreen extends React.Component{
             likes:"",
             dislikes:"",
             emailId:firebase.auth().currentUser.email,
+            
             
 
         }
@@ -36,8 +38,8 @@ export default class HomeScreen extends React.Component{
     render(){
         return(
             <View>
-            <Header
-            centerComponent={{text:"Home", style:{color:"blue"}}}/>  
+            <MyHeader
+            title="Home"/>  
   
             <TextInput 
             placeholder={"UserName"}
@@ -65,12 +67,14 @@ export default class HomeScreen extends React.Component{
 
             <TextInput
             placeholder={"Likes"}
+            multiline={true}
             onChangeText={(text)=>{
                 this.setState({likes:text})
             }}/>
 
             <TextInput
             placeholder={"Dislikes"}
+            multiline={true}
             onChangeText={(text)=>{
                 this.setState({dislikes:text})
             }}/> 

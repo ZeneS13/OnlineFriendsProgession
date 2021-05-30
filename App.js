@@ -1,21 +1,17 @@
 import * as React from 'react';
 import {  Text, View } from 'react-native';
 import { createAppContainer, createSwitchNavigator,} from 'react-navigation';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
-import LoginScreen from './screens/LoginScreen'
-import HomeScreen from './screens/HomeScreen'
-import SearchScreen from './screens/SearchScreen'
 
-const AppTabNavigator= createBottomTabNavigator(
-  {
-    Home: {screen:HomeScreen},
-    Search : {screen: SearchScreen}
-  }
-)
+import LoginScreen from './screens/LoginScreen'
+
+import {AppDrawerNavigator} from './components/AppDrawerNavigator'
+import  AppTabNavigator  from './components/AppTabNavigator'
+
 
 const SwitchNavigator=createSwitchNavigator(
   {
     Login: {screen:LoginScreen},
+    Drawer:{screen:AppDrawerNavigator},
     BottomTab:{screen:AppTabNavigator}
   }
 )

@@ -13,6 +13,7 @@ export default class SearchScreen extends React.Component{
      this.state={
          allUsersList:[],
          emailId:firebase.auth().currentUser.email,
+
      }
 
 
@@ -23,7 +24,8 @@ export default class SearchScreen extends React.Component{
                 (query)=>{
                   var allUsers=[]
                  query.forEach((doc)=>{
-                     allUsers.push(doc.data)
+                     var allUsers=doc.data()
+                     allUsers.push(allUsers)
                   console.log(allUsers)  
                 })
                 this.setState({
@@ -33,7 +35,7 @@ export default class SearchScreen extends React.Component{
         )
     }
 
-    renderItem=async(item,index)=>{
+    renderItem=async({item,index})=>{
      return(
          <View>
         <List.Item
@@ -52,7 +54,7 @@ export default class SearchScreen extends React.Component{
   }
 
   componentWillUnmount=()=>{
-      this.requestRef=null
+      this.requestRef();
   }
 
     render(){
